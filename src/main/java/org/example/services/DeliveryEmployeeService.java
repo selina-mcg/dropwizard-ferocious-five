@@ -37,7 +37,8 @@ public class DeliveryEmployeeService {
         return employeeId;
     }
 
-    public DeliveryEmployee getDeliveryEmployeeById(final int deliveryId) throws SQLException {
+    public DeliveryEmployee getDeliveryEmployeeById(
+            final int deliveryId) throws SQLException {
         return deliveryEmployeeDao.getDeliveryEmployeeById(deliveryId);
     }
 }

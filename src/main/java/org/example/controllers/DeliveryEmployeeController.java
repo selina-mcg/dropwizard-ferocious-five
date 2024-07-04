@@ -37,7 +37,8 @@ public class DeliveryEmployeeController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getDeliveryEmployee(final @PathParam("id") int id)
             throws SQLException {
-        return Response.ok().entity(deliveryEmployeeService.getDeliveryEmployeeById(id)).build();
+        return Response.ok().entity(deliveryEmployeeService.
+                getDeliveryEmployeeById(id)).build();
     }
 
     @POST

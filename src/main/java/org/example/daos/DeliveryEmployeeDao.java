@@ -89,11 +89,13 @@ public class DeliveryEmployeeDao {
         return deliveryEmployees;
     }
 
-    public DeliveryEmployee getDeliveryEmployeeById(final int deliveryId) throws SQLException {
+    public DeliveryEmployee getDeliveryEmployeeById(
+            final int deliveryId) throws SQLException {
         DeliveryEmployee deliveryEmployee = null;
 
         try (Connection connection = DatabaseConnector.getConnection()) {
-            String query = "SELECT * FROM employee WHERE employeeID = ?;";
+            String query = "SELECT * FROM employee "
+                    + "WHERE employeeID = ?;";
             PreparedStatement statement = connection.prepareStatement(query);
 
             statement.setInt(1, deliveryId);
