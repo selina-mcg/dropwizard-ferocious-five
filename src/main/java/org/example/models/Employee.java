@@ -18,9 +18,6 @@ public class Employee {
     @JsonProperty
     private String natInsurance;
 
-
-    //private enum employeeType;
-
     public Employee(final int employeeId, final String name, final int salary,
                     final int bankAccountNumber, final String natInsurance) {
         this.employeeId = employeeId;
