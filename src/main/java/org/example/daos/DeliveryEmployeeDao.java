@@ -40,7 +40,7 @@ public class DeliveryEmployeeDao {
             if (rs.next()) {
                 employeeId = rs.getInt(1);
             }
-//
+
             // Insert a new employee into delivery employee table
             String insertStDelivery =
                     "INSERT INTO `deliveryEmployee` (techLead, employeeID) "
@@ -66,7 +66,8 @@ public class DeliveryEmployeeDao {
         List<DeliveryEmployee> deliveryEmployees = new ArrayList<>();
 
         // Create db connection
-        try (Connection connection = DatabaseConnector.getConnection()) {
+        Connection connection = DatabaseConnector.getConnection();
+        try {
             // statement obj that sends SQL statements to db
             Statement statement = connection.createStatement();
 
@@ -85,7 +86,37 @@ public class DeliveryEmployeeDao {
 
                 deliveryEmployees.add(employee);
             }
+        } finally {
+            connection.close();
         }
         return deliveryEmployees;
+    }
+
+    public DeliveryEmployee getDeliveryEmployeeById(
+            final int deliveryId) throws SQLException {
+        DeliveryEmployee deliveryEmployee = null;
+
+        Connection connection = DatabaseConnector.getConnection();
+        try {
+            String query = "SELECT * FROM employee "
+                    + "WHERE employeeID = ?;";
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            statement.setInt(1, deliveryId);
+
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+
+            deliveryEmployee =  new DeliveryEmployee(
+                    resultSet.getInt("employeeID"),
+                    resultSet.getString("name"),
+                    resultSet.getInt("salary"),
+                    resultSet.getInt("bank_acc_num"),
+                    resultSet.getString("nin"));
+
+        } finally {
+            connection.close();
+        }
+        return deliveryEmployee;
     }
 }
