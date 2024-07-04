@@ -4,7 +4,7 @@ public class DeliveryResponse {
 
     private int employeeId;
 
-    private String Name;
+    private String name;
 
     private int salary;
 
@@ -12,10 +12,11 @@ public class DeliveryResponse {
 
     private String nin;
 
-    public DeliveryResponse(int employeeId, String name, int salary,
-                            int bankAccountNum, String nin) {
+    public DeliveryResponse(final int employeeId, final String name,
+                            final int salary,
+                            final int bankAccountNum, final String nin) {
         this.employeeId = employeeId;
-        Name = name;
+        this.name = name;
         this.salary = salary;
         this.bankAccountNum = bankAccountNum;
         this.nin = nin;
@@ -25,7 +26,7 @@ public class DeliveryResponse {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(final int employeeId) {
         this.employeeId = employeeId;
     }
 
@@ -33,23 +34,23 @@ public class DeliveryResponse {
         return nin;
     }
 
-    public void setNin(String nin) {
+    public void setNin(final String nin) {
         this.nin = nin;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setName(final String name) {
+        this.name = name;
     }
 
     public int getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(final int salary) {
         this.salary = salary;
     }
 
@@ -57,7 +58,7 @@ public class DeliveryResponse {
         return bankAccountNum;
     }
 
-    public void setBankAccountNum(int bankAccountNum) {
+    public void setBankAccountNum(final int bankAccountNum) {
         this.bankAccountNum = bankAccountNum;
     }
 }

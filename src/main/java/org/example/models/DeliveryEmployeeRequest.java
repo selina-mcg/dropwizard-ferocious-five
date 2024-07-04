@@ -11,10 +11,10 @@ public class DeliveryEmployeeRequest {
 
     @JsonCreator
     public DeliveryEmployeeRequest(
-            @JsonProperty("name") String name,
-            @JsonProperty("salary") int salary,
-            @JsonProperty("bankAccountNumber") int bankAccountNumber,
-            @JsonProperty("natInsurance") String natInsurance) {
+            final @JsonProperty("name") String name,
+            final @JsonProperty("salary") int salary,
+            final @JsonProperty("bankAccountNumber") int bankAccountNumber,
+            final @JsonProperty("natInsurance") String natInsurance) {
         this.name = name;
         this.salary = salary;
         this.bankAccountNumber = bankAccountNumber;
@@ -25,7 +25,7 @@ public class DeliveryEmployeeRequest {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -33,7 +33,7 @@ public class DeliveryEmployeeRequest {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(final int salary) {
         this.salary = salary;
     }
 
@@ -41,7 +41,7 @@ public class DeliveryEmployeeRequest {
         return bankAccountNumber;
     }
 
-    public void setBankAccountNumber(int bankAccountNumber) {
+    public void setBankAccountNumber(final int bankAccountNumber) {
         this.bankAccountNumber = bankAccountNumber;
     }
 
@@ -49,7 +49,7 @@ public class DeliveryEmployeeRequest {
         return natInsurance;
     }
 
-    public void setNatInsurance(String natInsurance) {
+    public void setNatInsurance(final String natInsurance) {
         this.natInsurance = natInsurance;
     }
 }

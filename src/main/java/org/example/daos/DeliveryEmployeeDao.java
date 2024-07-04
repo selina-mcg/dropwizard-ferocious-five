@@ -12,15 +12,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DeliveryEmployeeDao {
-    public int createDeliveryEmployee(DeliveryEmployeeRequest deliveryRequest) throws
-            SQLException {
-        try (Connection connection = DatabaseConnector.getConnection()) {
+    public int createDeliveryEmployee(final DeliveryEmployeeRequest
+              deliveryRequest) throws SQLException {
+
+        Connection connection = DatabaseConnector.getConnection();
+        try {
             int employeeId = -1;
 
             // Create a new employee
-            String insertSt = "INSERT INTO `employee` (name, salary, bank_acc_num, nin) VALUES (?, ?, ?, ?);";
+            String insertStEmployee =
+                    "INSERT INTO `employee` (name, salary, bank_acc_num, nin) "
+                            +  "VALUES (?, ?, ?, ?);";
 
-            PreparedStatement st = connection.prepareStatement(insertSt, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement st = connection.prepareStatement(insertStEmployee,
+                    Statement.RETURN_GENERATED_KEYS);
 
             st.setString(1, deliveryRequest.getName());
             st.setInt(2, deliveryRequest.getSalary());
@@ -33,13 +38,15 @@ public class DeliveryEmployeeDao {
             ResultSet rs = st.getGeneratedKeys();
 
             if (rs.next()) {
-                employeeId =  rs.getInt(1);
+                employeeId = rs.getInt(1);
             }
 //
             // Insert a new employee into delivery employee table
-            insertSt = "INSERT INTO `deliveryEmployee` (techLead, employeeID) VALUES (?, ?);";
+            String insertStDelivery =
+                    "INSERT INTO `deliveryEmployee` (techLead, employeeID) "
+                            + "VALUES (?, ?);";
 
-            st = connection.prepareStatement(insertSt);
+            st = connection.prepareStatement(insertStDelivery);
 
             // Set tech lead role as none ie. 0
             st.setInt(1, 0);
@@ -48,6 +55,10 @@ public class DeliveryEmployeeDao {
             st.executeUpdate();
 
             return employeeId;
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.close();
         }
     }
 
@@ -60,7 +71,8 @@ public class DeliveryEmployeeDao {
             Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery(
-                    "SELECT employeeID, name, salary, bank_acc_num, nin FROM employee;");
+                    "SELECT employeeID, name, salary, bank_acc_num, nin "
+                            + "FROM employee;");
 
             // iterate throw each row of the result set
             while (resultSet.next()) {

@@ -21,7 +21,8 @@ public class Employee {
 
     //private enum employeeType;
 
-    public Employee(int employeeId, String name, int salary, int bankAccountNumber, String natInsurance ) {
+    public Employee(final int employeeId, final String name, final int salary,
+                    final int bankAccountNumber, final String natInsurance) {
         this.employeeId = employeeId;
         this.name = name;
         this.salary = salary;
@@ -33,7 +34,7 @@ public class Employee {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(final int employeeId) {
         this.employeeId = employeeId;
     }
 
@@ -41,7 +42,7 @@ public class Employee {
         return natInsurance;
     }
 
-    public void setNatInsurance(String natInsurance) {
+    public void setNatInsurance(final String natInsurance) {
         this.natInsurance = natInsurance;
     }
 
@@ -49,7 +50,7 @@ public class Employee {
         return bankAccountNumber;
     }
 
-    public void setBankAccountNumber(int bankAccountNumber) {
+    public void setBankAccountNumber(final int bankAccountNumber) {
         this.bankAccountNumber = bankAccountNumber;
     }
 
@@ -57,7 +58,7 @@ public class Employee {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -65,7 +66,7 @@ public class Employee {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(final int salary) {
         this.salary = salary;
     }
 }

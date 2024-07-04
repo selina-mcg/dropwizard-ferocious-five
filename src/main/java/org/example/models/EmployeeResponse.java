@@ -4,26 +4,26 @@ public class EmployeeResponse {
 
     private int employeeId;
 
-    private String Name;
+    private String name;
 
-    public EmployeeResponse(int employeeId, String Name) {
+    public EmployeeResponse(final int employeeId, final String name) {
         this.employeeId = employeeId;
-        this.Name = Name;
+        this.name = name;
     }
 
     public int getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(final int employeeId) {
         this.employeeId = employeeId;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setName(final String name) {
+        this.name = name;
     }
 }

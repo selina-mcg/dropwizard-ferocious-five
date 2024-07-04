@@ -6,22 +6,19 @@ import io.dropwizard.setup.Environment;
 import io.federecio.dropwizard.swagger.SwaggerBundle;
 import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 import org.example.controllers.DeliveryEmployeeController;
-import org.example.controllers.TestController;
 import org.example.daos.DeliveryEmployeeDao;
-import org.example.daos.TestDao;
 import org.example.services.DeliveryEmployeeService;
-import org.example.services.TestService;
-//import io.federecio.dropwizard.swagger.SwaggerBundle;
-//import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 
 public class TestApplication extends Application<TestConfiguration> {
     public static void main(final String[] args) throws Exception {
         new TestApplication().run(args);
     }
+
     @Override
     public String getName() {
         return "Test";
     }
+
     @Override
     public void initialize(final Bootstrap<TestConfiguration> bootstrap) {
         bootstrap.addBundle(new SwaggerBundle<>() {
@@ -32,13 +29,14 @@ public class TestApplication extends Application<TestConfiguration> {
             }
         });
     }
+
     @Override
     public void run(final TestConfiguration configuration,
                     final Environment environment) {
         environment.jersey()
-                .register(new TestController(new TestService(new TestDao())));
-        environment.jersey()
-                .register(new DeliveryEmployeeController(new DeliveryEmployeeService(new DeliveryEmployeeDao())));
+                .register(new DeliveryEmployeeController(
+                        new DeliveryEmployeeService(
+                                new DeliveryEmployeeDao())));
 
     }
 
