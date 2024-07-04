@@ -40,7 +40,7 @@ public class DeliveryEmployeeDao {
             if (rs.next()) {
                 employeeId = rs.getInt(1);
             }
-//
+
             // Insert a new employee into delivery employee table
             String insertStDelivery =
                     "INSERT INTO `deliveryEmployee` (techLead, employeeID) "
