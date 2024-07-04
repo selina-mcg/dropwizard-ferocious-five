@@ -2,6 +2,7 @@ package org.example.services;
 
 import org.example.daos.DeliveryEmployeeDao;
 import org.example.mappers.EmployeeMapper;
+import org.example.models.DeliveryEmployee;
 import org.example.models.DeliveryEmployeeRequest;
 import org.example.models.DeliveryResponse;
 
@@ -34,5 +35,9 @@ public class DeliveryEmployeeService {
         }
 
         return employeeId;
+    }
+
+    public DeliveryEmployee getDeliveryEmployeeById(final int deliveryId) throws SQLException {
+        return deliveryEmployeeDao.getDeliveryEmployeeById(deliveryId);
     }
 }

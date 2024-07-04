@@ -88,4 +88,27 @@ public class DeliveryEmployeeDao {
         }
         return deliveryEmployees;
     }
+
+    public DeliveryEmployee getDeliveryEmployeeById(final int deliveryId) throws SQLException {
+        DeliveryEmployee deliveryEmployee = null;
+
+        try (Connection connection = DatabaseConnector.getConnection()) {
+            String query = "SELECT * FROM employee WHERE employeeID = ?;";
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            statement.setInt(1, deliveryId);
+
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+
+            deliveryEmployee =  new DeliveryEmployee(
+                    resultSet.getInt("employeeID"),
+                    resultSet.getString("name"),
+                    resultSet.getInt("salary"),
+                    resultSet.getInt("bank_acc_num"),
+                    resultSet.getString("nin"));
+
+        }
+        return deliveryEmployee;
+    }
 }
